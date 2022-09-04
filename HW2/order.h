@@ -14,8 +14,12 @@ namespace Order{
         items items;
     public:
         int customerNumber;
-        inline order(int customerNumber) { this->customerNumber = customerNumber; }
-        void printOrder(std::ofstream &outFile);
-        void addItem(Product::product product);
+        inline explicit order(int customerNumber) { this->customerNumber = customerNumber; }
+        static void printItem(std::ofstream &outFile, const Product::product& product);
+        void printHeader(std::ofstream &outFile) const;
+        void addItem(Product::product product, int qty, std::ofstream &outFile);
+        static void printItemNotFound(std::ofstream &outFile, int enteredPN);
+
+        void printTotals(std::ofstream &outFile);
     };
 }
