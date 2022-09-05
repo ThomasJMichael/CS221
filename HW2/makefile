@@ -6,7 +6,11 @@
 OBJS	= main.o invent.o order.o product.o
 SOURCE	= main.cpp invent.cpp order.cpp product.cpp
 HEADER	= invent.h order.h product.h
+DRIV_OBJ = InventDriver.o product.o invent.o
+DRIV_SOURCE =  InventDriver.cpp product.cpp invent.cpp
+DRIV_HEADER = product.h invent.h
 OUT	= a.out
+DRIV_OUT = b.out
 CC	 = g++
 FLAGS	 = -g -c -Wall
 LFLAGS	 = 
@@ -17,6 +21,8 @@ LFLAGS	 =
 all: $(OBJS)
 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
+driver: $(DRIV_OBJ)
+	$(CC) -g $(DRIV_OBJ) -o $(DRIV_OUT) $(LFLAGS)
 
 # create/compile the individual files >>separately<<
 CheckoutSystem.o: main.cpp

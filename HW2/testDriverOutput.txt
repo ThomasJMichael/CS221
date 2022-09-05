@@ -1,0 +1,4 @@
+Invalid product for command: add on command number: 1
+==========[Inventory]==========
+11012 | gallon-milk | 1.99 | 0
+===============================

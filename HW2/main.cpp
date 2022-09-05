@@ -9,6 +9,7 @@
 #include "product.h"
 #include <cctype>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 /*
@@ -25,20 +26,34 @@ int main(){
     
     ifstream inFile;
     ofstream outFile;
-    inFile.open("C:/Dev/CppSeries/CS221/HW2/Invent.dat");
+    inFile.open("Invent.dat");
     if (!inFile){
         cerr << "Error opening input file." << endl;
+        return 1;
     }
-    outFile.open("C:/Dev/CppSeries/CS221/HW2/Output.dat");
+    outFile.open("Output.dat");
     if (!outFile){
         cerr << "Error opening output.dat" << endl;
+        return 1;
     }
     while (getline(inFile, line)){
-        int productNumber = stoi(line.substr(0,MAX_PN));
+        int productNumber;
+        try {
+            productNumber = stoi(line.substr(0,MAX_PN));
+        } catch (invalid_argument &e) {
+            cerr << "Invalid input for product number." << endl;
+            return 1;
+        }
         size_t pos1 = line.find(' ',MAX_PN+1);
         string desc = line.substr(MAX_PN+1, pos1-MAX_PN);
         size_t pos2 = line.find(' ',pos1+1);
-        double price = stod(line.substr(pos1+1, pos2-pos1));
+        double price;
+        try {
+            price = stod(line.substr(pos1 + 1, pos2 - pos1));
+        } catch (invalid_argument &e){
+            cerr << "Invalid input for price." << endl;
+            return 1;
+        }
         size_t pos3 = line.find(' ',pos2);
         string tax = line.substr(pos3+1);
         bool taxable;

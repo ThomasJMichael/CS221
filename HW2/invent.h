@@ -17,8 +17,28 @@ namespace Invent {
         };
         productsInventory productsInventory;
     public:
+        /**
+        * @brief Adds product to a vector for inventory.
+        * 
+        * @param product    Product object
+        */
         void addProduct(const Product::product& product);
+        /**
+         * @brief Get the Inventory object
+         * 
+         * @return std::vector<Product::product> 
+         */
         std::vector<Product::product> getInventory() const;
+        /**
+         * @brief Prints the contents of the inventory vector to terminal.
+         * 
+         */
         void printInvent();
+        /**
+         * @brief Overloaded function to print inventory vector to file
+         * 
+         * @param outFile The file to write the contents of the inventory too.
+         */
+        void printInvent(std::ofstream &outFile);
     };
 }

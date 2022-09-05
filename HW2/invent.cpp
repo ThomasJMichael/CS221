@@ -5,6 +5,8 @@
  * @brief Class for the store inventory management system
  */
 #include "invent.h"
+#include <fstream>
+#include <ostream>
 #include <vector>
 
 using namespace Invent;
@@ -24,4 +26,12 @@ void inventory::printInvent() {
     }
 }
 
+void inventory::printInvent(std::ofstream &outFile) {
+    outFile << "==========[Inventory]==========" << std::endl;
+    for (const Product::product& product : productsInventory.inventVect){
+        outFile << product.productNumber << " | "  << product.desc
+        << " | " << product.price << " | " << product.taxable << std::endl;
+    }
+    outFile << "===============================" << std::endl;
+}
 
