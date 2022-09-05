@@ -1,3 +1,9 @@
+/**
+ * @file product.h
+ * @author Thomas Michael (tjm0027@uah.edu)
+ * @date 2 Aug 2022
+ * @brief Header file for the product class
+ */
 #pragma once
 #include <string>
 

@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Thomas Michael (tjm0027@uah.edu)
+ * @date 2 Aug 2022
+ * @brief Client code for a grocery store checkout system
+ */
 #include "invent.h"
 #include "order.h"
 #include "product.h"
@@ -5,6 +11,9 @@
 #include <iostream>
 #include <string>
 
+/*
+ *The maximum allotted size for a product number.
+ */
 #define MAX_PN 5
 
 using namespace std;
@@ -25,7 +34,6 @@ int main(){
         cerr << "Error opening output.dat" << endl;
     }
     while (getline(inFile, line)){
-        cout << line << endl;
         int productNumber = stoi(line.substr(0,MAX_PN));
         size_t pos1 = line.find(' ',MAX_PN+1);
         string desc = line.substr(MAX_PN+1, pos1-MAX_PN);
@@ -54,7 +62,6 @@ int main(){
             getline(cin, input);
             if (input.size() < MAX_PN){
                 if (input[0] == '0'){
-                    std::cout << input[0] << std::endl;
                     customerOrder.printTotals(outFile);
                     break;
                 }else{

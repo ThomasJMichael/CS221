@@ -1,18 +1,24 @@
+/**
+ * @file invent.cpp
+ * @author Thomas Michael (tjm0027@uah.edu)
+ * @date 2 Aug 2022
+ * @brief Class for the store inventory management system
+ */
 #include "invent.h"
 #include <vector>
 
 using namespace Invent;
 
-void inventory::addProduct(Product::product product){
+void inventory::addProduct(const Product::product& product){
     productsInventory.inventVect.push_back(product);
 }
 
-std::vector<Product::product> inventory::getInventory(){
+std::vector<Product::product> inventory::getInventory() const{
     return productsInventory.inventVect;
 }
 
 void inventory::printInvent() {
-    for (Product::product product : productsInventory.inventVect){
+    for (const Product::product& product : productsInventory.inventVect){
         std::cout << product.productNumber << " | "  << product.desc
         << " | " << product.price << " | " << product.taxable << std::endl;
     }

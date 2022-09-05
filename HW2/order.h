@@ -1,3 +1,9 @@
+/**
+ * @file order.h
+ * @author Thomas Michael (tjm0027@uah.edu)
+ * @date 2 Aug 2022
+ * @brief  Header for a grocery store checkout system
+ */
 #pragma once
 #include "product.h"
 #include <algorithm>
@@ -19,7 +25,6 @@ namespace Order{
         void printHeader(std::ofstream &outFile) const;
         void addItem(Product::product product, int qty, std::ofstream &outFile);
         static void printItemNotFound(std::ofstream &outFile, int enteredPN);
-
         void printTotals(std::ofstream &outFile);
     };
 }

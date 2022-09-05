@@ -1,3 +1,9 @@
+/**
+ * @file invent.h
+ * @author Thomas Michael (tjm0027@uah.edu)
+ * @date 2 Aug 2022
+ * @brief Header file for the store inventory.
+ */
 #pragma once
 #include <vector>
 #include "product.h"
@@ -8,13 +14,11 @@ namespace Invent {
     private:
         struct productsInventory{
             std::vector<Product::product> inventVect;
-            //productsInventory();
         };
         productsInventory productsInventory;
     public:
-        //inventory();
-        void addProduct(Product::product product);
-        std::vector<Product::product> getInventory();
+        void addProduct(const Product::product& product);
+        std::vector<Product::product> getInventory() const;
         void printInvent();
     };
 }

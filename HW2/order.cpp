@@ -1,3 +1,9 @@
+/**
+ * @file order.cpp
+ * @author Thomas Michael (tjm0027@uah.edu)
+ * @date 2 Aug 2022
+ * @brief Implementation for the customers order and the functions for printing receipts
+ */
 #include "order.h"
 #include <algorithm>
 #include <iostream>
