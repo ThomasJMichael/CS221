@@ -6,7 +6,6 @@
  */
 #include "invent.h"
 #include "order.h"
-#include "product.h"
 #include <cctype>
 #include <iostream>
 #include <stdexcept>
