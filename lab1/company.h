@@ -1,3 +1,10 @@
+/**
+ * @file company.h
+ * @author Jacob Michael (tjm0027@uah.edu)
+ * @brief Header file for company class
+ * @date 2022-09-09
+ * 
+ */
 #pragma once
 #include "employee.h"
 #include <fstream>
@@ -6,62 +13,92 @@
 namespace company {
     struct companyNode;
     class company{
-        public:
-        company(std::string name);
+    public:
+        /**
+         * @breif Constructor for company list of employees
+         * @param name String for company name;
+         */
+        explicit company(std::string name);
+        /**
+         * @brief Destructor. Frees memory allocated on heap.
+         */
         ~company();
+        /**
+         * @brief empty's the list
+         */
         void MakeEmpty();
-        // Function: Returns the list to the empty state.
-        // Post:  List is empty.
+        /**
+         * @brief Checks if the heap has enough memory to allocate another node
+         * @return bool for if the heap has enough space to allocate another node
+         */
         bool IsFull() const;
-        // Function:  Determines whether list is full.
-        // Pre:  List has been initialized.
-        // Post: Function value = (list is full)
-
+        /**
+         * @breif Getter for length of list
+         * @return int length of list
+         */
         int GetLength() const;
-        // Function: Determines the number of elements in list.
-        // Pre:  List has been initialized.
-        // Post: Function value = number of elements in list
-
-
+        /**
+         * @brief Adds an employee object to list
+         * @param employee Employee object
+         */
         void putEmployee(Employee::employee employee);
-        // Function: Adds item to list.
-        // Pre:  List has been initialized.
-        //       List is not full.
-        //       item is not in list.
-        // Post: item is in list.
-
+        /**
+         * @brief Removes given employee from list
+         * @param employee Employee object
+         */
         void deleteEmployee(std::string employee);
-        // Function: Deletes the element whose key matches item's key.
-        // Pre:  List has been initialized.
-        //       Key member of item is initialized.
-        //       One and only one element in list has a key matching item's key.
-        // Post: No element in list has a key matching item's key.
-
-        void ResetList();
-        // Function: Initializes current position for an iteration through the list.
-        // Pre:  List has been initialized.
-        // Post: Current position is prior to list.
-
-        Employee::employee GetNextEmployee();
-        // Function: Gets the next element in list.
-        // Pre:  List has been initialized and has not been changed since last call.
-        //       Current position is defined.
-        //       Element at current position is not last in list.
-        //	     
-        // Post: Current position is updated to next position.
-        //       item is a copy of element at current position.
-
+        /**
+         * @brief returns pointer to next employee node
+         * @return Pointer to next employee node
+         */
+        Employee::employee* GetNextEmployee();
+        /**
+         * @brief Promotes employee to position + 1
+         * @param employee Employee to be promoted
+         */
         void promoteEmployee(Employee::employee employee);
+        /**
+         * @brief demotes employee to position - 1
+         * @param employee Employee to be demoted
+         */
         void demoteEmployee(Employee::employee employee);
+        /**
+         * @brief Pays all employees in the list
+         */
         void payEmployees();
+        /**
+         * @brief prints all employee names from the list
+         */
         void printEmployees();
+        /**
+         * @brief Overloaded function to print all employee names from list to file
+         * @param outFile  output file
+         */
+        void printEmployees(std::ofstream &outFile);
+        /**
+         * @brief Checks if an employee of the given name is in the list
+         * @param employee string for employee in list
+         * @return bool for if the employee name is found
+         */
         bool containsEmployee(std::string employee);
+        /**
+         * @brief gets node of specific employee object
+         * @param employee Employee to find
+         * @return Pointer to given employees node
+         */
         companyNode* getEmployee(Employee::employee employee);
+        /**
+         * @brief Gets a pointer to the previous node of the given employee.
+         * @param employee Given employee object
+         * @return Pointer to node before the given employees node
+         */
         companyNode* getPreviousEmployee(Employee::employee employee);
-
+        /**
+         * @brief Returns the name of the company
+         * @return string for company name
+         */
         inline std::string getName(){ return companyName;};
-
-        private:
+    private:
         std::string  companyName;
         companyNode* headNode;
         int length;
